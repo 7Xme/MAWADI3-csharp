@@ -24,7 +24,7 @@
 
             <!-- AppBar -->
             <Border Grid.Row="0"
-                    Background="{materialDesign:MaterialDesignBackground}"
+                    Background="{DynamicResource MaterialDesignPaper}"
                     Padding="12,8"
                     BorderBrush="#E0E0E0"
                     BorderThickness="0,0,0,1">

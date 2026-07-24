@@ -7,7 +7,6 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Assets\logo.png</ApplicationIcon>
     <AssemblyName>Mawadi3Print</AssemblyName>
     <RootNamespace>Mawadi3Print</RootNamespace>
     <Version>1.0.0</Version>

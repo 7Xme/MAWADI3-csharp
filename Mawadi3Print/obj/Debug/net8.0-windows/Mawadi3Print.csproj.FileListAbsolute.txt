@@ -1,0 +1,4 @@
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.csproj.AssemblyReference.cache
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.baml
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.g.cs
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print_MarkupCompile.cache
