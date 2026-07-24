@@ -40,7 +40,7 @@
                             Width="36"
                             Height="36"
                             CornerRadius="18"
-                            Background="{materialDesign:PrimaryHueMidBrush}"
+                            Background="{DynamicResource PrimaryHueMidBrush}"
                             Margin="0,0,12,0">
                         <Image Source="Assets/logo.png"
                                Width="36"
