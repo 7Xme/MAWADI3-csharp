@@ -44,7 +44,8 @@ public static class PrintService
 
         var flowDoc = new FlowDocument
         {
-            PageSize = new Size(96 * 8.27, 96 * 11.69), // A4
+            PageWidth = 96 * 8.27, // A4
+            PageHeight = 96 * 11.69, // A4
             FlowDirection = rtl ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
             FontFamily = rtl ? arabicFont : new FontFamily("Segoe UI"),
             ColumnWidth = double.MaxValue,
@@ -66,7 +67,7 @@ public static class PrintService
         {
             Margin = new Thickness(0, 4, 0, 8),
             Height = 1,
-            Background = new SolidColorBrush(Color.FromRgb(128, 128, 128))
+            Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(128, 128, 128))
         }));
 
         // Content paragraphs
@@ -90,7 +91,7 @@ public static class PrintService
         var footerParagraph = new Paragraph(new Run(footerText))
         {
             FontSize = 9,
-            Foreground = new SolidColorBrush(Color.FromRgb(128, 128, 128)),
+            Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(128, 128, 128)),
             TextAlignment = TextAlignment.Center,
             FontFamily = rtl ? arabicFont : new FontFamily("Segoe UI"),
             Margin = new Thickness(0, 20, 0, 0)
@@ -184,7 +185,7 @@ public static class PrintService
                         .AlignLeft();
 
                     // Divider
-                    col.Item().LineHorizontal(1).LineColor(Colors.Grey);
+                    col.Item().LineHorizontal(1).LineColor("#808080");
 
                     // Content paragraphs
                     var paragraphs = content.Split(["\n\n"], StringSplitOptions.None);
@@ -200,7 +201,7 @@ public static class PrintService
                 // Footer
                 page.Footer().AlignCenter().Text(
                     $"توليد بواسطة مكتبة العلوم • {DateTime.Now.ToLocalTime():yyyy-MM-dd HH:mm:ss}")
-                    .FontSize(9).FontColor(Colors.Grey);
+                    .FontSize(9).FontColor("#808080");
             });
         }).GeneratePdf(saveDialog.FileName);
     }

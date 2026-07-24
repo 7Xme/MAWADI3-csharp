@@ -5,10 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:viewModels="clr-namespace:Mawadi3Print.ViewModels"
+             xmlns:converters="clr-namespace:Mawadi3Print.Converters"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:SettingsViewModel}"
              Width="450"
              FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:StringNotEmptyToVisibilityConverter x:Key="StringNotEmptyToVisibilityConverter" />
+    </UserControl.Resources>
     <materialDesign:DialogHost Identifier="SettingsDialog">
         <StackPanel Margin="24" FlowDirection="RightToLeft">
             <TextBlock Text="إعدادات مفتاح Gemini"
@@ -37,12 +42,13 @@
                     CornerRadius="4"
                     Padding="8"
                     Margin="0,0,0,12"
-                    Visibility="{Binding HasExistingKey, Converter={x:Static materialDesign:VisibilityConverter.Visible}}">
-                <StackPanel Orientation="Horizontal" Spacing="8">
+                    Visibility="{Binding HasExistingKey, Converter={StaticResource BoolToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="CheckCircle"
                                              Foreground="Green"
                                              Width="20"
-                                             Height="20" />
+                                             Height="20"
+                                             Margin="0,0,8,0" />
                     <TextBlock Text="{Binding ExistingKeyPreview}"
                                VerticalAlignment="Center"
                                FontSize="13" />
@@ -62,11 +68,6 @@
             <TextBlock Text="مفتاح Gemini"
                        FontSize="13"
                        Margin="0,0,0,4" />
-            <materialDesign:TextFieldAssist.SetUnderlineOnFocus>
-                <materialDesign:HintAssist.Hint>
-                    <TextBlock Text="AIza..." />
-                </materialDesign:HintAssist.Hint>
-            </materialDesign:TextFieldAssist.SetUnderlineOnFocus>
             <PasswordBox x:Name="KeyPasswordBox"
                          materialDesign:HintAssist.Hint="AIza..."
                          Margin="0,0,0,12"
@@ -74,12 +75,11 @@
 
             <Button Content="حفظ المفتاح"
                     Command="{Binding SaveKeyCommand}"
-                    materialDesign:ButtonIsLoading="{Binding IsLoading}"
                     IsDefault="True"
                     Margin="0,0,0,8" />
 
             <TextBlock Text="خطأ:"
-                       Visibility="{Binding ErrorMessage, Converter={x:Static materialDesign:VisibilityConverter.Visible}}"
+                       Visibility="{Binding ErrorMessage, Converter={StaticResource StringNotEmptyToVisibilityConverter}}"
                        Foreground="Red"
                        FontSize="12"
                        Margin="0,0,0,8" />
