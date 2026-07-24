@@ -1,13 +1,3 @@
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.csproj.AssemblyReference.cache
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.baml
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.g.cs
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print_MarkupCompile.cache
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Views\SettingsDialog.g.cs
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print_MarkupCompile.lref
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\MainWindow.g.cs
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.dll
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\refint\Mawadi3Print.dll
-D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.pdb
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\LatoFont\Lato-Black.ttf
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\LatoFont\Lato-BlackItalic.ttf
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\LatoFont\Lato-Bold.ttf
@@ -57,7 +47,14 @@ D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\runtimes\win-x86\native\libstdc++-6.dll
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\runtimes\win-x86\native\libwinpthread-1.dll
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\bin\Debug\net8.0-windows\runtimes\win-x86\native\qpdf.dll
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.csproj.AssemblyReference.cache
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.baml
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Views\SettingsDialog.g.cs
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\App.g.cs
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print_MarkupCompile.cache
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print_MarkupCompile.lref
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\MainWindow.baml
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Views\SettingsDialog.baml
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.g.resources
@@ -67,5 +64,8 @@ D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.csproj.CoreCompileInputs.cache
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.sourcelink.json
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3P.2291BB8A.Up2Date
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.dll
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\refint\Mawadi3Print.dll
+D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.pdb
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\Mawadi3Print.genruntimeconfig.cache
 D:\githubprojects\MKTABA TOOLS ALL IN ONE\MAWADI3 csharp\Mawadi3Print\obj\Debug\net8.0-windows\ref\Mawadi3Print.dll
