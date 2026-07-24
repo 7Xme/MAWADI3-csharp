@@ -336,7 +336,7 @@
                         <Button Grid.Column="0"
                                 Command="{Binding PrintArticleCommand}"
                                 Style="{StaticResource MaterialDesignElevatedButton}"
-                                Background="{materialDesign:PrimaryHueMidBrush}"
+                                Background="{DynamicResource PrimaryHueMidBrush}"
                                 Foreground="White"
                                 Height="44">
                             <StackPanel Orientation="Horizontal" Spacing="8">
