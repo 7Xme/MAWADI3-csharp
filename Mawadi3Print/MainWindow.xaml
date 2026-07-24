@@ -1,0 +1,374 @@
+<Window x:Class="Mawadi3Print.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModels="clr-namespace:Mawadi3Print.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+        Title="مَواضيع_print"
+        MinWidth="800"
+        MinHeight="600"
+        Width="1000"
+        Height="700"
+        FlowDirection="RightToLeft"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+    <materialDesign:DialogHost Identifier="RootDialog">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- AppBar -->
+            <Border Grid.Row="0"
+                    Background="{materialDesign:MaterialDesignBackground}"
+                    Padding="12,8"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Logo Avatar -->
+                    <Border Grid.Column="0"
+                            Width="36"
+                            Height="36"
+                            CornerRadius="18"
+                            Background="{materialDesign:PrimaryHueMidBrush}"
+                            Margin="0,0,12,0">
+                        <Image Source="Assets/logo.png"
+                               Width="36"
+                               Height="36"
+                               Stretch="UniformToFill" />
+                    </Border>
+
+                    <!-- Title -->
+                    <TextBlock Grid.Column="1"
+                               Text="مَواضيع_print"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center" />
+
+                    <!-- Right controls -->
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"
+                                Spacing="8">
+                        <!-- API Key Chip -->
+                        <Border CornerRadius="12"
+                                Padding="8,4"
+                                Background="{Binding HasApiKey, Converter={x:Static materialDesign:BooleanToBrushConverter.Instance}, ConverterParameter=Green|Orange}">
+                            <TextBlock Text="{Binding ApiKeyStatus}"
+                                       FontSize="12"
+                                       Foreground="White" />
+                        </Border>
+
+                        <!-- Settings Button -->
+                        <Button Command="{Binding OpenSettingsCommand}"
+                                ToolTip="إعدادات مفتاح Gemini"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                materialDesign:ButtonAssist.CornerRadius="20">
+                            <materialDesign:PackIcon Kind="Settings"
+                                                     Width="22"
+                                                     Height="22" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Panel -->
+                <Border Grid.Column="0"
+                        Background="#FAFAFA"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="0,0,1,0"
+                        Padding="20">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Spacing="16">
+
+                            <!-- Topic Input -->
+                            <StackPanel>
+                                <TextBlock Text="1. أدخل الموضوع ولا العنوان"
+                                           FontSize="16"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4" />
+                                <TextBox Text="{Binding Topic, UpdateSourceTrigger=PropertyChanged}"
+                                         AcceptsReturn="True"
+                                         MinLines="3"
+                                         MaxLines="6"
+                                         TextWrapping="Wrap"
+                                         materialDesign:HintAssist.Hint="مثال: فوائد المشي يومياً..."
+                                         Style="{StaticResource MaterialDesignFilledTextBox}" />
+                            </StackPanel>
+
+                            <!-- Language -->
+                            <StackPanel>
+                                <TextBlock Text="2. اللغة المطلوبة للمقال"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4" />
+                                <StackPanel Orientation="Horizontal" Spacing="16">
+                                    <RadioButton GroupName="Language"
+                                                 IsChecked="{Binding SelectedLanguage, Converter={x:Static materialDesign:RadioButtonConverter.Instance}, ConverterParameter=fr}"
+                                                 Content="الفرنسية" />
+                                    <RadioButton GroupName="Language"
+                                                 IsChecked="{Binding SelectedLanguage, Converter={x:Static materialDesign:RadioButtonConverter.Instance}, ConverterParameter=ar}"
+                                                 Content="العربية (من اليمين لليسار)" />
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Model Selection -->
+                            <StackPanel>
+                                <TextBlock Text="3. الموديل ديال الذكاء الاصطناعي"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,4" />
+                                <ComboBox ItemsSource="{Binding Models}"
+                                          SelectedItem="{Binding SelectedModel}"
+                                          IsEditable="False"
+                                          materialDesign:HintAssist.Hint="اختر موديل"
+                                          Style="{StaticResource MaterialDesignFilledComboBox}" />
+                                <TextBlock FontSize="11"
+                                           Foreground="Gray"
+                                           Margin="0,4,0,0">
+                                    نصيحة: خذ مفتاح Gemini مجاني من
+                                    <Hyperlink NavigateUri="https://aistudio.google.com/app/apikey"
+                                               RequestNavigate="Hyperlink_OpenApiKey">
+                                        https://aistudio.google.com/app/apikey
+                                    </Hyperlink>
+                                </TextBlock>
+                            </StackPanel>
+
+                            <!-- Generate Button -->
+                            <Button Command="{Binding GenerateArticleCommand}"
+                                    Height="48"
+                                    Style="{StaticResource MaterialDesignElevatedButton}"
+                                    IsEnabled="{Binding IsLoading, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Inverse}}">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <materialDesign:PackIcon Kind="AutoAwesome"
+                                                             Width="20"
+                                                             Height="20" />
+                                    <TextBlock Text="{Binding IsLoading, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Inverse}}"
+                                               Text="وِلّد المقال"
+                                               Visibility="Visible" />
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Loading State -->
+                            <StackPanel Visibility="{Binding IsLoading, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Instance}}"
+                                        Orientation="Horizontal"
+                                        Spacing="8"
+                                        HorizontalAlignment="Center">
+                                <ProgressBar IsIndeterminate="True"
+                                             Width="24"
+                                             Height="24"
+                                             Style="{StaticResource MaterialDesignProgressBar}" />
+                                <TextBlock Text="كايْتولد..."
+                                           FontSize="14"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <!-- API Key Warning -->
+                            <TextBlock Visibility="{Binding HasApiKey, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Inverse}}"
+                                       Text="⚠️ الرجاء دخل مفتاح Gemini (انقر على الترس)"
+                                       Foreground="Red"
+                                       FontSize="13"
+                                       TextWrapping="Wrap" />
+
+                            <!-- Error Display -->
+                            <TextBlock Visibility="{Binding HasError, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Instance}}"
+                                       Text="{Binding ErrorMessage}"
+                                       Foreground="Red"
+                                       FontSize="13"
+                                       TextWrapping="Wrap" />
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <!-- Right Panel (Preview) -->
+                <Grid Grid.Column="1"
+                      Background="White"
+                      Padding="24">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Header Row -->
+                    <Grid Grid.Row="0" Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="معاينة"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center" />
+
+                        <!-- Word Count Badge -->
+                        <Border Grid.Column="1"
+                                CornerRadius="12"
+                                Padding="8,4"
+                                Margin="8,0,0,0"
+                                Background="{Binding IsWordCountGood, Converter={x:Static materialDesign:BooleanToBrushConverter.Instance}, ConverterParameter=#E8F5E9|#FFF3E0}"
+                                Visibility="{Binding CurrentArticle, Converter={x:Static materialDesign:VisibilityConverter.Visible}}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding WordCount, StringFormat='{}{0} كلمة'}"
+                                       FontSize="12"
+                                       Foreground="{Binding IsWordCountGood, Converter={x:Static materialDesign:BooleanToBrushConverter.Instance}, ConverterParameter=Green|Orange}" />
+                        </Border>
+
+                        <!-- Copy Button -->
+                        <Button Grid.Column="2"
+                                Command="{Binding CopyArticleCommand}"
+                                ToolTip="نسخ"
+                                Style="{StaticResource MaterialDesignIconButton}"
+                                Visibility="{Binding CurrentArticle, Converter={x:Static materialDesign:VisibilityConverter.Visible}}">
+                            <materialDesign:PackIcon Kind="ContentCopy"
+                                                     Width="20"
+                                                     Height="20" />
+                        </Button>
+                    </Grid>
+
+                    <!-- Preview Content -->
+                    <ScrollViewer Grid.Row="1"
+                                  VerticalScrollBarVisibility="Auto"
+                                  Visibility="{Binding CurrentArticle, Converter={x:Static materialDesign:VisibilityConverter.Visible}}">
+                        <StackPanel>
+                            <!-- Title -->
+                            <TextBlock Text="{Binding CurrentArticle.Title}"
+                                       FontSize="26"
+                                       FontWeight="Bold"
+                                       FlowDirection="{Binding SelectedLanguage, Converter={x:Static materialDesign:FlowDirectionConverter.Instance}}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8" />
+
+                            <!-- Divider -->
+                            <Rectangle Height="1"
+                                       Fill="#E0E0E0"
+                                       Margin="0,0,0,16" />
+
+                            <!-- Content -->
+                            <TextBlock Text="{Binding CurrentArticle.Content}"
+                                       FontSize="16"
+                                       LineHeight="26"
+                                       FlowDirection="{Binding SelectedLanguage, Converter={x:Static materialDesign:FlowDirectionConverter.Instance}}"
+                                       TextWrapping="Wrap" />
+
+                            <!-- Fallback Warning -->
+                            <Border Background="#FFF8E1"
+                                    CornerRadius="4"
+                                    Padding="12"
+                                    Margin="0,12,0,0"
+                                    Visibility="{Binding CurrentArticle.IsFallback, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Instance}}">
+                                <TextBlock Text="⚠ كايستعمل الرد الخام ديال الذكاء الاصطناعي (وضع احتياطي)"
+                                           FontSize="13"
+                                           TextWrapping="Wrap" />
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Empty State -->
+                    <StackPanel Grid.Row="1"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Visibility="{Binding CurrentArticle, Converter={x:Static materialDesign:NullToVisibilityConverter.Instance}}">
+                        <materialDesign:PackIcon Kind="ArticleOutlined"
+                                                 Width="72"
+                                                 Height="72"
+                                                 Foreground="#BDBDBD"
+                                                 HorizontalAlignment="Center" />
+                        <TextBlock Text="لمقال لي غايتولد غايبان هنا"
+                                   FontSize="16"
+                                   Foreground="Gray"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,8,0,0" />
+                        <TextBlock Text="دخل موضوع على اليسار وانقر على 'وَلِّد المقال'"
+                                   FontSize="14"
+                                   Foreground="#9E9E9E"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,4,0,0" />
+                    </StackPanel>
+
+                    <!-- Loading State Overlay -->
+                    <StackPanel Grid.Row="1"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Visibility="{Binding IsLoading, Converter={x:Static materialDesign:BooleanToVisibilityConverter.Instance}}">
+                        <ProgressRing Width="48"
+                                      Height="48"
+                                      IsActive="{Binding IsLoading}" />
+                        <TextBlock Text="كاينحاول يتواصل مع Gemini..."
+                                   FontSize="14"
+                                   Foreground="Gray"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,12,0,0" />
+                    </StackPanel>
+
+                    <!-- Bottom Action Buttons -->
+                    <Grid Grid.Row="2"
+                          Margin="0,16,0,0"
+                          Visibility="{Binding CurrentArticle, Converter={x:Static materialDesign:VisibilityConverter.Visible}}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="16" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Command="{Binding PrintArticleCommand}"
+                                Style="{StaticResource MaterialDesignElevatedButton}"
+                                Background="{materialDesign:PrimaryHueMidBrush}"
+                                Foreground="White"
+                                Height="44">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <materialDesign:PackIcon Kind="Print"
+                                                         Width="20"
+                                                         Height="20" />
+                                <TextBlock Text="طبع" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Grid.Column="2"
+                                Command="{Binding SavePdfCommand}"
+                                Style="{StaticResource MaterialDesignOutlinedButton}"
+                                Height="44">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <materialDesign:PackIcon Kind="SaveAlt"
+                                                         Width="20"
+                                                         Height="20" />
+                                <TextBlock Text="حفظ كـ PDF" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Snackbar -->
+            <materialDesign:Snackbar Grid.Row="1"
+                                     Message="{Binding SnackbarMessage}"
+                                     IsActive="{Binding IsSnackbarVisible}"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Bottom"
+                                     Margin="0,0,0,16" />
+        </Grid>
+    </materialDesign:DialogHost>
+</Window>
