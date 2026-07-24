@@ -10,6 +10,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new MainViewModel();
         Loaded += OnLoaded;
     }
 
@@ -17,7 +18,20 @@ public partial class MainWindow : Window
     {
         if (DataContext is MainViewModel vm)
         {
-            // Settings dialog auto-opens if no key (handled in ViewModel)
+            try
+            {
+                await vm.InitializeAsync();
+
+                if (!vm.HasApiKey)
+                {
+                    await Task.Delay(300);
+                    await vm.OpenSettingsCommand.ExecuteAsync(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "خطأ في التهيئة", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 

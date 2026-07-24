@@ -15,7 +15,7 @@
         Height="700"
         FlowDirection="RightToLeft"
         WindowStartupLocation="CenterScreen"
-        FontFamily="{materialDesign:MaterialDesignFont}">
+        FontFamily="Segoe UI">
     <Window.Resources>
         <converters:BoolToBrushConverter x:Key="BoolToBrushConverter" />
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />

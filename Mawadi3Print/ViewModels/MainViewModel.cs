@@ -72,20 +72,12 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
-        _ = InitializeAsync();
     }
 
-    private async Task InitializeAsync()
+    public async Task InitializeAsync()
     {
         HasApiKey = await _storageService.HasAnyKeyAsync();
         UpdateApiKeyStatus();
-
-        if (!HasApiKey)
-        {
-            // Open settings dialog after window loads
-            await Task.Delay(500);
-            await OpenSettingsAsync();
-        }
     }
 
     private void UpdateApiKeyStatus()

@@ -21,8 +21,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\logo.png" />
-    <Resource Include="Assets\fonts\Cairo-Regular.ttf" />
-    <Resource Include="Assets\fonts\NotoSansArabic-Regular.ttf" />
   </ItemGroup>
 
 </Project>
