@@ -119,7 +119,7 @@
                                          MaxLines="6"
                                          TextWrapping="Wrap"
                                          materialDesign:HintAssist.Hint="مثال: فوائد المشي يومياً..."
-                                         Style="{StaticResource MaterialDesignFilledTextBox}" />
+                                         Style="{StaticResource MaterialDesignTextBox}" />
                             </StackPanel>
 
                             <!-- Language -->
@@ -149,7 +149,7 @@
                                           SelectedItem="{Binding SelectedModel}"
                                           IsEditable="False"
                                           materialDesign:HintAssist.Hint="اختر موديل"
-                                          Style="{StaticResource MaterialDesignFilledComboBox}" />
+                                          Style="{StaticResource MaterialDesignComboBox}" />
                                 <TextBlock FontSize="11"
                                            Foreground="Gray"
                                            Margin="0,4,0,0">
@@ -164,7 +164,7 @@
                             <!-- Generate Button -->
                             <Button Command="{Binding GenerateArticleCommand}"
                                     Height="48"
-                                    Style="{StaticResource MaterialDesignElevatedButton}"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
                                     IsEnabled="{Binding IsLoading, Converter={StaticResource BoolToInverseVisibilityConverter}}">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="AutoAwesome"
@@ -183,7 +183,6 @@
                                 <ProgressBar IsIndeterminate="True"
                                              Width="24"
                                              Height="24"
-                                             Style="{StaticResource MaterialDesignProgressBar}"
                                              Margin="0,0,8,0" />
                                 <TextBlock Text="كايْتولد..."
                                            FontSize="14"
@@ -325,8 +324,7 @@
                                 Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}">
                         <ProgressBar Width="48"
                                       Height="48"
-                                      IsIndeterminate="True"
-                                      Style="{StaticResource MaterialDesignProgressBar}" />
+                                      IsIndeterminate="True" />
                         <TextBlock Text="كاينحاول يتواصل مع Gemini..."
                                    FontSize="14"
                                    Foreground="Gray"
@@ -346,7 +344,7 @@
 
                         <Button Grid.Column="0"
                                 Command="{Binding PrintArticleCommand}"
-                                Style="{StaticResource MaterialDesignElevatedButton}"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
                                 Background="{DynamicResource PrimaryHueMidBrush}"
                                 Foreground="White"
                                 Height="44">
