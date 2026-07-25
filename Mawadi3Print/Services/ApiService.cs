@@ -191,7 +191,7 @@ public partial class ApiService
         return new InvalidOperationException($"خطأ Gemini: {status} - {errorBody}");
     }
 
-    [GeneratedRegex(@"^(هذا هو الموضوع|إليك المقال|إليك الموضوع|بالتأكيد، إليك|ها هو المقال|هذا المقال|المقال التالي)\s*[:;،\-]*\s*", RegexOptions.IgnoreCase | RegexOptions.RightToLeft)]
+    [GeneratedRegex(@"^(هذا هو الموضوع|إليك المقال|إليك الموضوع|بالتأكيد، إليك|ها هو المقال|هذا المقال|المقال التالي)\s*[:;،\-]*\s*", RegexOptions.IgnoreCase)]
     private static partial Regex ArabicPrefixRegex();
 
     [GeneratedRegex(@"^Voici l['']article\s*[:;,\-]*\s*", RegexOptions.IgnoreCase)]
