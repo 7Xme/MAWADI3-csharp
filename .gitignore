@@ -3,3 +3,6 @@
 /Mawadi3Print/bin
 *.exe
 /Mawadi3Print/bin
+Mawadi3Print/bin/Debug/net8.0-windows/Mawadi3Print.exe
+*.exe
+/Mawadi3Print/bin

@@ -167,9 +167,9 @@
                             <Button Command="{Binding GenerateArticleCommand}"
                                     Height="48"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
-                                    IsEnabled="{Binding IsLoading, Converter={StaticResource BoolToInverseVisibilityConverter}}">
+                                    IsEnabled="{Binding IsLoading, Converter={StaticResource BoolToInverseConverter}}">
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="AutoAwesome"
+                                    <materialDesign:PackIcon Kind="Star"
                                                              Width="20"
                                                              Height="20"
                                                              Margin="0,0,8,0" />
@@ -262,7 +262,7 @@
                     <!-- Preview Content -->
                     <ScrollViewer Grid.Row="1"
                                   VerticalScrollBarVisibility="Auto"
-                                  Visibility="{Binding CurrentArticle, Converter={StaticResource NotNullToVisibilityConverter}}">
+                                Visibility="{Binding CurrentArticle, Converter={StaticResource NullToVisibilityConverter}}">
                         <StackPanel>
                             <!-- Title -->
                             <TextBlock Text="{Binding CurrentArticle.Title}"
@@ -351,7 +351,7 @@
                                 Foreground="White"
                                 Height="44">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Print"
+                                <materialDesign:PackIcon Kind="Printer"
                                                          Width="20"
                                                          Height="20" />
                                 <TextBlock Text="طبع" />
