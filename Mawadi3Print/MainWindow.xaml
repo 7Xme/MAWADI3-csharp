@@ -23,6 +23,8 @@
         <converters:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
         <converters:StringToFlowDirectionConverter x:Key="StringToFlowDirectionConverter" />
         <converters:RadioButtonConverter x:Key="RadioButtonConverter" />
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converters:BoolToInverseConverter x:Key="BoolToInverseConverter" />
     </Window.Resources>
     <materialDesign:DialogHost Identifier="RootDialog">
         <Grid>

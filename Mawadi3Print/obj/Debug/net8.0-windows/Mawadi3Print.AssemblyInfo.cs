@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mawadi3Print")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1150893efe63581c59523afc67f4490e4b46106")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10bee98e4a855bdad91e87a89cb0df07885012ff")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mawadi3Print")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mawadi3Print")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
