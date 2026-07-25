@@ -215,7 +215,12 @@ public partial class MainViewModel : ObservableObject
             UpdateApiKeyStatus();
         };
 
-        await DialogHost.Show(dialog, "RootDialog");
+        viewModel.RequestClose = () =>
+        {
+            MaterialDesignThemes.Wpf.DialogHost.Close("RootDialog");
+        };
+
+        await MaterialDesignThemes.Wpf.DialogHost.Show(dialog, "RootDialog");
     }
 
     private void ShowSnackbar(string message)
@@ -274,6 +279,7 @@ public partial class SettingsViewModel : ObservableObject
 
     public event Action? OnSaved;
     public event Action? OnCleared;
+    public Action? RequestClose { get; set; }
 
     public SettingsViewModel(StorageService storage)
     {
@@ -306,6 +312,7 @@ public partial class SettingsViewModel : ObservableObject
         ExistingKeyPreview = $"مفتاح Gemini محفوظ: ...{NewKey.Trim()[^6..]}";
         NewKey = null;
         OnSaved?.Invoke();
+        RequestClose?.Invoke();
     }
 
     [RelayCommand]
@@ -315,6 +322,7 @@ public partial class SettingsViewModel : ObservableObject
         HasExistingKey = false;
         ExistingKeyPreview = null;
         OnCleared?.Invoke();
+        RequestClose?.Invoke();
     }
 
     [RelayCommand]

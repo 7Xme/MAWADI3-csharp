@@ -25,12 +25,23 @@ public class BoolToBrushConverter : IValueConverter
     private static Color ParseColor(string hex)
     {
         hex = hex.TrimStart('#');
-        if (hex.Length == 6)
+        if (hex.Length == 6 && hex.All(c => Uri.IsHexDigit(c)))
             return Color.FromRgb(
                 byte.Parse(hex[..2], NumberStyles.HexNumber),
                 byte.Parse(hex[2..4], NumberStyles.HexNumber),
                 byte.Parse(hex[4..6], NumberStyles.HexNumber));
-        return Colors.Transparent;
+
+        return hex.ToLowerInvariant() switch
+        {
+            "green" => Colors.Green,
+            "orange" => Colors.Orange,
+            "red" => Colors.Red,
+            "white" => Colors.White,
+            "black" => Colors.Black,
+            "gray" or "grey" => Colors.Gray,
+            "transparent" => Colors.Transparent,
+            _ => Colors.Transparent
+        };
     }
 }
 
