@@ -46,7 +46,7 @@ public partial class ApiService
             generationConfig = new
             {
                 temperature = 0.3,
-                maxOutputTokens = 1500
+                maxOutputTokens = 2048
             }
         };
 
@@ -54,7 +54,8 @@ public partial class ApiService
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         Article? lastArticle = null;
-        var maxAttempts = 2;
+        const int minWords = 150;
+        const int maxAttempts = 10;
 
         for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
@@ -87,16 +88,14 @@ public partial class ApiService
 
             lastArticle = article;
 
-            if (article.WordCount >= 350 || attempt >= maxAttempts)
+            if (article.WordCount >= minWords || attempt >= maxAttempts)
                 break;
+
+            // Brief delay before retry
+            await Task.Delay(TimeSpan.FromSeconds(2), ct);
         }
 
-        if (lastArticle!.WordCount < 350)
-        {
-            // Return anyway, UI will warn
-        }
-
-        return lastArticle;
+        return lastArticle!;
     }
 
     private static string SanitizeModel(string model)
@@ -135,8 +134,7 @@ public partial class ApiService
 
         var (title, content) = ExtractTitle(text, topic);
 
-        var wordCount = System.Text.RegularExpressions.Regex.Split(content, @"\s+")
-            .Count(s => !string.IsNullOrWhiteSpace(s));
+        var wordCount = CountWords(content);
 
         return new Article
         {
@@ -165,15 +163,25 @@ public partial class ApiService
         var lines = text.Split('\n', StringSplitOptions.None);
         var firstNonEmpty = lines.FirstOrDefault(l => !string.IsNullOrWhiteSpace(l))?.Trim();
 
+        // If first line looks like a title (short, no ending punctuation), extract it
         if (firstNonEmpty != null && firstNonEmpty.Length < 80
-            && !firstNonEmpty.EndsWith('.') && !firstNonEmpty.EndsWith('،') && !firstNonEmpty.EndsWith('؟'))
+            && !firstNonEmpty.EndsWith('.') && !firstNonEmpty.EndsWith('،') && !firstNonEmpty.EndsWith('؟')
+            && !firstNonEmpty.EndsWith(':') && !firstNonEmpty.EndsWith(';'))
         {
             var title = firstNonEmpty;
             var content = string.Join("\n", lines.SkipWhile(l => l.Trim() == firstNonEmpty)).Trim();
-            return (title, content);
+            if (CountWords(content) >= 50)
+                return (title, content);
         }
 
         return (fallbackTopic, text.Trim());
+    }
+
+    private static int CountWords(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return 0;
+        return System.Text.RegularExpressions.Regex.Split(text, @"\s+")
+            .Count(s => !string.IsNullOrWhiteSpace(s));
     }
 
     private static async Task<Exception> ParseHttpErrorAsync(HttpResponseMessage response, string errorBody)

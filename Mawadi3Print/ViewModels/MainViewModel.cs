@@ -123,13 +123,17 @@ public partial class MainViewModel : ObservableObject
 
             CurrentArticle = article;
             WordCount = article.WordCount;
-            IsWordCountGood = article.WordCount >= 350 && article.WordCount <= 420;
+            IsWordCountGood = article.WordCount >= 300 && article.WordCount <= 500;
 
-            if (article.WordCount < 350)
+            if (article.WordCount < 150 && article.WordCount > 0)
             {
                 ShowSnackbar($"لمقال فيه غير {article.WordCount} كلمة (المفروض مابين 350 و 400)");
             }
-            else if (article.WordCount > 420)
+            else if (article.WordCount >= 150 && article.WordCount < 300)
+            {
+                ShowSnackbar($"لمقال فيه {article.WordCount} كلمة (قريب من المطلوب)");
+            }
+            else if (article.WordCount > 500)
             {
                 ShowSnackbar($"لمقال فيه {article.WordCount} كلمة (شويا زايد).");
             }
